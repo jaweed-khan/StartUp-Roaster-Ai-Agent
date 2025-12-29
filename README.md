@@ -1,16 +1,52 @@
-# React + Vite
+# 🔥 The Brutal VC.ai
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An AI-powered startup idea roasting machine that evaluates your pitch like a brutally honest Silicon Valley Venture Capitalist.
 
-Currently, two official plugins are available:
+No hype.  
+No encouragement.  
+Just reality.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**The Brutal VC.ai** is a React-based demo application that uses Hugging Face inference APIs to analyze and roast startup ideas.  
+It mimics the mindset of a cynical VC by focusing on:
 
-## Expanding the ESLint configuration
+- Market saturation
+- Weak unit economics
+- Execution risks
+- Competitive threats
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Perfect for founders who want **honest feedback before wasting months of effort**.
+
+---
+
+## 🧠 How It Works
+
+1. User submits a startup idea via the chat interface
+2. The idea is sent to a Hugging Face LLM via API
+3. The AI responds in a **harsh VC tone**
+4. The response is rendered in a conversational UI
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- **React (Vite)**
+- **Tailwind CSS**
+- Modern component-based UI
+
+### AI / Backend
+- **Hugging Face Inference API**
+- Secure API token via environment variables
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file in the root of the project:
+
+```env
+VITE_HF_API_TOKEN=hf_your_token_here
