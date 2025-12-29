@@ -1,12 +1,9 @@
-import { useChat } from '@ai-sdk/react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function App() {
-  // useChat connects to your /api/chat.js automatically
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-    api: '/api/chat',
-  });
-
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef(null);
 
   // Keep chat scrolled to bottom
@@ -73,13 +70,58 @@ function App() {
         </div>
 
         {/* Input Area */}
-        <form onSubmit={handleSubmit} className="p-4 bg-zinc-900/80 border-t border-zinc-800">
+        <form onSubmit={async (e) => {
+          e.preventDefault();
+          if (!input.trim() || isLoading) return;
+
+          const userMessage = { id: Date.now().toString(), role: 'user', content: input };
+          setMessages(prev => [...prev, userMessage]);
+          setInput('');
+          setIsLoading(true);
+
+          try {
+            const response = await fetch('/api/chat', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ messages: [...messages, userMessage] })
+            });
+
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let assistantContent = '';
+            const assistantId = (Date.now() + 1).toString();
+
+            while (true) {
+              const { done, value } = await reader.read();
+              if (done) break;
+              
+              const chunk = decoder.decode(value, { stream: true });
+              assistantContent += chunk;
+              
+              setMessages(prev => {
+                const without = prev.filter(m => m.id !== assistantId);
+                return [...without, { id: assistantId, role: 'assistant', content: assistantContent }];
+              });
+            }
+          } catch (error) {
+            console.error('Error:', error);
+            alert('Failed to get response: ' + error.message);
+          } finally {
+            setIsLoading(false);
+          }
+        }} className="p-4 bg-zinc-900/80 border-t border-zinc-800">
           <div className="relative group">
             <input
+              type="text"
+              name="prompt"
               className="w-full bg-zinc-950 border border-zinc-800 rounded-2xl py-4 pl-5 pr-14 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all text-zinc-200 placeholder:text-zinc-600"
               value={input}
               placeholder="Ex: Uber for pet rocks..."
-              onChange={handleInputChange}
+              onChange={(e) => setInput(e.target.value)}
             />
             <button
               type="submit"
