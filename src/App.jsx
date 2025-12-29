@@ -40,7 +40,7 @@ function App() {
       elements.push(
         <h3
           key={elements.length}
-          className="text-sm font-bold uppercase tracking-widest text-emerald-400 mt-4 mb-2"
+          className="text-sm font-bold uppercase tracking-widest text-emerald-600 mt-4 mb-2"
         >
           {trimmed.replace(':', '')}
         </h3>
@@ -76,31 +76,31 @@ function App() {
   }, [messages]);
 
   return (
-    <div className="min-h-screen p-6 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-800 via-zinc-950 to-black flex items-center justify-center">
+    <div className="min-h-screen p-6 bg-white flex items-center justify-center">
 
       {/* MAIN 2-COLUMN WRAPPER */}
       <div className="w-full max-w-7xl flex gap-6 h-[90vh]">
 
        {/* LEFT SIDE – EXPLANATION PANEL */}
-    <div className="w-[40%] bg-zinc-900/50 backdrop-blur-xl border border-zinc-800 rounded-3xl shadow-2xl p-8 overflow-y-auto">
+    <div className="w-[40%] bg-gray-50 backdrop-blur-xl border border-gray-300 rounded-3xl shadow-2xl p-8 overflow-y-auto">
       <div className="space-y-6">
     
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-black tracking-tighter text-white uppercase mb-2">
-            The Brutal VC <span className="text-emerald-500">.ai</span>
+          <h1 className="text-3xl font-black tracking-tighter text-gray-900 uppercase mb-2">
+            The Brutal VC <span className="text-emerald-600">.ai</span>
           </h1>
-          <p className="text-zinc-400 text-sm">
+          <p className="text-gray-600 text-sm">
             Relentlessly honest feedback on your startup idea — from a VC who’s seen it all.
           </p>
         </div>
 
         {/* What is this */}
         <div>
-          <h2 className="text-lg font-bold text-emerald-500 uppercase">
+          <h2 className="text-lg font-bold text-emerald-600 uppercase">
             💼 What is this?
           </h2>
-          <p className="text-zinc-300 text-sm leading-relaxed mt-2">
+          <p className="text-gray-700 text-sm leading-relaxed mt-2">
             A no-nonsense AI startup critic that evaluates your pitch the way a
             seasoned Silicon Valley venture capitalist would — with brutal honesty,
             zero optimism, and an allergy to bad ideas.
@@ -109,10 +109,10 @@ function App() {
 
         {/* How it works */}
         <div>
-          <h2 className="text-lg font-bold text-emerald-500 uppercase">
+          <h2 className="text-lg font-bold text-emerald-600 uppercase">
             ⚡ How it works
           </h2>
-          <ul className="mt-2 space-y-2 text-sm text-zinc-300">
+          <ul className="mt-2 space-y-2 text-sm text-gray-700">
             <li>• Pitch your “world-changing” startup idea</li>
             <li>• The AI dissects your market, moat, and execution reality</li>
             <li>• You receive a detailed, unfiltered VC-style teardown</li>
@@ -120,14 +120,14 @@ function App() {
         </div>
 
         {/* Warning */}
-        <div className="bg-red-900/20 border border-red-800/50 rounded-lg p-4">
-          <p className="text-xs text-red-300 font-mono uppercase tracking-wider">
+        <div className="bg-red-50 border border-red-300 rounded-lg p-4">
+          <p className="text-xs text-red-700 font-mono uppercase tracking-wider">
             ⚠️ Warning: Brutal honesty ahead. Ego damage is not only possible — it’s likely.
           </p>
         </div>
 
         {/* Footer */}
-        <div className="text-xs text-zinc-500 font-mono uppercase tracking-widest space-y-1">
+        <div className="text-xs text-gray-600 font-mono uppercase tracking-widest space-y-1">
           <p>
             Built with a brutally honest 💀 mindset by Jaweed Khan
           </p>
@@ -135,7 +135,7 @@ function App() {
             Full source code on GitHub:
             <a
               href="https://github.com/jaweed-khan/StartUp-Roaster-Ai-Agent"
-              className="underline ml-1"
+              className="underline ml-1 text-emerald-600 hover:text-emerald-700"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -149,15 +149,15 @@ function App() {
 
 
         {/* RIGHT SIDE – YOUR EXISTING CHAT (UNCHANGED) */}
-        <div className="flex-1 bg-zinc-900/50 backdrop-blur-xl border border-zinc-800 rounded-3xl shadow-2xl flex flex-col h-full overflow-hidden">
+        <div className="flex-1 bg-gray-50 backdrop-blur-xl border border-gray-300 rounded-3xl shadow-2xl flex flex-col h-full overflow-hidden">
 
           {/* Header */}
-          <div className="p-6 border-b border-zinc-800 flex justify-between items-center bg-zinc-900/80">
+          <div className="p-6 border-b border-gray-300 flex justify-between items-center bg-white">
             <div>
-              <h1 className="text-xl font-black tracking-tighter text-white uppercase">
-                The Brutal VC <span className="text-emerald-500">.ai</span>
+              <h1 className="text-xl font-black tracking-tighter text-gray-900 uppercase">
+                The Brutal VC <span className="text-emerald-600">.ai</span>
               </h1>
-              <p className="text-[10px] text-zinc-500 font-mono tracking-widest uppercase mt-1">
+              <p className="text-[10px] text-gray-600 font-mono tracking-widest uppercase mt-1">
                 Status: Looking to roast
               </p>
             </div>
@@ -170,9 +170,9 @@ function App() {
             className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth"
           >
             {messages.length === 0 ? (
-              <div className="h-full flex flex-col items-center justify-center text-center space-y-4 opacity-30">
+              <div className="h-full flex flex-col items-center justify-center text-center space-y-4 opacity-50">
                 <div className="text-6xl">💼</div>
-                <p className="font-mono text-sm uppercase tracking-widest">
+                <p className="font-mono text-sm uppercase tracking-widest text-gray-600">
                   Pitch me your "disruptive" idea. <br /> Don't waste my time.
                 </p>
               </div>
@@ -184,8 +184,8 @@ function App() {
                 >
                   <div className={`max-w-[80%] p-4 rounded-2xl text-sm leading-relaxed ${
                     m.role === 'user'
-                      ? 'bg-blue-600 text-white rounded-br-none shadow-lg shadow-blue-900/20'
-                      : 'bg-zinc-800 text-zinc-200 border border-zinc-700 rounded-bl-none'
+                      ? 'bg-blue-600 text-white rounded-br-none shadow-lg shadow-blue-600/20'
+                      : 'bg-white text-gray-800 border border-gray-300 rounded-bl-none'
                   }`}>
                     <p className="font-bold text-[10px] uppercase tracking-tighter mb-1 opacity-50">
                       {m.role === 'user' ? 'Founder' : 'The VC'}
@@ -199,7 +199,7 @@ function App() {
             )}
 
             {isLoading && (
-              <div className="text-xs font-mono text-zinc-500 animate-pulse uppercase tracking-widest">
+              <div className="text-xs font-mono text-gray-600 animate-pulse uppercase tracking-widest">
                 Calculating burn rate...
               </div>
             )}
@@ -246,12 +246,12 @@ function App() {
                 setIsLoading(false);
               }
             }}
-            className="p-4 bg-zinc-900/80 border-t border-zinc-800"
+            className="p-4 bg-white border-t border-gray-300"
           >
             <div className="relative group">
               <input
                 type="text"
-                className="w-full bg-zinc-950 border border-zinc-800 rounded-2xl py-4 pl-5 pr-14 text-sm"
+                className="w-full bg-white border border-gray-300 rounded-2xl py-4 pl-5 pr-14 text-sm text-gray-900 placeholder-gray-500"
                 value={input}
                 placeholder="Ex: Uber for pet rocks..."
                 onChange={(e) => setInput(e.target.value)}
