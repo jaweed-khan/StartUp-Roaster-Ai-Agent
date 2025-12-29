@@ -1,3 +1,12 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-zinc-950 text-zinc-100 m-0 p-0 antialiased;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
