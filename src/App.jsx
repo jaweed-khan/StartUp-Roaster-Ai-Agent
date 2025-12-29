@@ -126,7 +126,11 @@ function App() {
             <button
               type="submit"
               disabled={isLoading || !input}
-              className="absolute right-2 top-2 bottom-2 px-4 bg-emerald-600 text-white rounded-xl font-bold hover:bg-emerald-500 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+              className={`absolute right-2 top-2 bottom-2 px-4 text-white rounded-xl font-bold transition-colors disabled:opacity-20 disabled:cursor-not-allowed ${
+                input.trim() 
+                  ? 'bg-[#463030] hover:bg-[#5a3c3c]' 
+                  : 'bg-emerald-600 hover:bg-[#463030]'
+              }`}
             >
               PITCH
             </button>
